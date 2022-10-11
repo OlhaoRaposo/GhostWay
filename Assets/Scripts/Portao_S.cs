@@ -16,16 +16,15 @@ public class Portao_S : MonoBehaviour
 
     public void Start()
     {
-        closeGate.SetActive(true);
-        openGate.SetActive(false);
+        closeGate.gameObject.SetActive(true);
+        openGate.gameObject.SetActive(false);
     }
     public void FixedUpdate()
     {
         if (Gatelife <= 0)
         {
-            closeGate.SetActive(false);
-
-            openGate.SetActive(true);
+            closeGate.gameObject.SetActive(false);
+            openGate.gameObject.SetActive(true);
             coll.enabled = false;
         }    
     }
@@ -34,7 +33,7 @@ public class Portao_S : MonoBehaviour
     {
         if (col.gameObject.CompareTag("inimigo"))
         {
-            Gatelife -= 2;
+            Gatelife -= 1;
             
             if (Gatelife >= 0)
             {
@@ -42,7 +41,7 @@ public class Portao_S : MonoBehaviour
             }
             else
             {
-                life.text = "0";
+                life.text = Gatelife.ToString();
             }
         }
     }

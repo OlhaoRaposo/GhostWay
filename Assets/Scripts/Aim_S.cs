@@ -7,36 +7,35 @@ public class Aim_S : MonoBehaviour
     public GameObject aim, player;
     public Vector3 screenPosition, worlPosition;
     public float smooth;
-    public LayerMask layerToHit;
-    public LayerMask layerObj;
+    public LayerMask groundLayer = 6;
+    public LayerMask turretLayer = 7;
+    public Vector3 plus;
 
-    private void Start()
-    {
-        layerToHit = 3;
-    }
+   
     void Update()
     {
         screenPosition = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
         //IgnoraObjeto
-        if (Physics.Raycast(ray, out RaycastHit hitData,300,6))
-        {
-            
-        }
-        //Hita o Chao
-        if (Physics.Raycast(ray, out RaycastHit hit, 300, 3))
+        if (Physics.Raycast(ray, out RaycastHit hitData, 300, groundLayer) == true)
         {
             worlPosition = hitData.point;
         }
-
-        aim.transform.position = worlPosition;
+        if (Physics.Raycast(ray, out RaycastHit hit, 300, turretLayer) == true)
+        {
+            
+        }
+        
+        aim.transform.position = worlPosition + plus;
         player.transform.position = Vector3.Lerp(player.transform.position, aim.transform.position, smooth);
 
-        if (Input.GetMouseButton(0))
-        {
-            //hit.collider.gameObject.transform.position = aim.transform.position;
-            Debug.Log(hitData.collider.gameObject.name + " ground");
-            Debug.Log(hit.collider.gameObject.name + " object");
+        if (Input.GetMouseButton(0) && hit.collider.gameObject.CompareTag("Turret")==true) {
+            GameObject turret;
+            turret = hit.collider.gameObject;
+            turret.transform.position = aim.transform.position;
+        }
+        else {
+            return;
         }
     }
 }
