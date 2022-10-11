@@ -12,6 +12,8 @@ public class Portao_S : MonoBehaviour
     public bool isClosed = true;
     public Collider coll;
 
+    public UI_S hud;
+
     public void Start()
     {
         closeGate.SetActive(true);
@@ -33,9 +35,10 @@ public class Portao_S : MonoBehaviour
         if (col.gameObject.CompareTag("inimigo"))
         {
             Gatelife -= 2;
+            
             if (Gatelife >= 0)
             {
-                life.text = (Gatelife).ToString();
+                hud.AtualizaLife();
             }
             else
             {
