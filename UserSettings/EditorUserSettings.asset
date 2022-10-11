@@ -6,6 +6,7 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
+<<<<<<< HEAD
       value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
       flags: 0
     RecentlyUsedSceneGuid-1:
@@ -21,6 +22,9 @@ EditorUserSettings:
       value: 5b000503060051580f0d547a48740f44424e4c2f2f7a206129704437b0b6646f
 >>>>>>> Menu
 >>>>>>> HUD
+=======
+      value: 5550040357010c09540c547148755a44474f4073792c70662c784f36bae4313a
+>>>>>>> PlaceObject
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

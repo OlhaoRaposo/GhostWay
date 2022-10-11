@@ -6,15 +6,19 @@ TagManager:
   tags:
   - inimigo
   - Bala
+<<<<<<< HEAD
   - HUD
+=======
+  - Portao
+>>>>>>> PlaceObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Object
   - 
   - 
   - 

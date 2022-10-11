@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: bf9600a5d792fad47b8a61a8a76f094e
+=======
+guid: e6bc87a51a013744190ae4387744d7cc
+>>>>>>> PlaceObject
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
