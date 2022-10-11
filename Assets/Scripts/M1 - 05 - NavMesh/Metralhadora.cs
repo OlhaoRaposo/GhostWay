@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Metralhadora : MonoBehaviour
 {
@@ -22,17 +23,24 @@ public class Metralhadora : MonoBehaviour
 
     [Header("Ataque")]
     // Define que vamos atirar um projetil por segundo
-    [SerializeField] private float fireRate = 1f;
+    [SerializeField] private float fireRate = 3f;
     // Determina a proximo momento de disparo (ja comeca atirando)
-    [SerializeField] private float fireCountdown = 0f;
+    [SerializeField] private float fireCountdown = 3f;
 
     [SerializeField] private GameObject projetilPrefab;
     [SerializeField] private Transform firePoint;
+
+    public GameObject UpWindow;
+    private int value = 100; 
+    private int fireLevel = 1;
+    private UI_S HUD;
 
     private void Start()
     {
         // Vamos chamar o metodo de encontrar alvo assim que entrarmos no Start e apos isso, a cada meio segundo --> dessa forma nao sobrecarregamos o Update
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        HUD = GameObject.Find("HUD").GetComponent<UI_S>();
+        fireRate = 3;
     }
 
     private void UpdateTarget()
@@ -112,5 +120,28 @@ public class Metralhadora : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    //Bagunça da Bia
+    public void UpVel(){
+        if(fireLevel < 3 && HUD.money >= 200){
+            value += 50;
+            fireRate += 3;
+            fireLevel ++;
+            HUD.money -= 200;
+            HUD.AtualizaMoney();
+        }
+        
+    }
+
+    public void Vender(){
+        Destroy(this.gameObject);
+        HUD.money += value;
+        HUD.AtualizaMoney();
+    }
+
+    public void AbrirUp(){
+        UpWindow.SetActive(true);
+        
     }
 }

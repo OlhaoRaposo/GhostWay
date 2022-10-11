@@ -12,22 +12,23 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private int waveNumber = 1;
     [SerializeField] private float timeBetweenSpawns = 0.5f;
     [SerializeField] private float waveTime = 3f;
-
     [SerializeField] private Text Waves;
-    
-
     public GameObject[] CheckObjects;
+
     private bool newWave = true;
+    private Text txtWave;
     public UI_S UI;
+
 
     private void Start()
     {
         StartCoroutine(StartWave());
+        txtWave = GameObject.Find("HUD").GetComponent<UI_S>().txtWave;
     }
     private void Update()
     {
         WaveIsOver();
-        Waves.text = (waveNumber).ToString();
+        txtWave.text = (waveNumber).ToString();
     }
 
     private IEnumerator SpawnWave()
