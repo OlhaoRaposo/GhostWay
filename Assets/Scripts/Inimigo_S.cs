@@ -7,7 +7,8 @@ public class Inimigo_S : MonoBehaviour
 {
     [SerializeField] private GameObject destino;
     private NavMeshAgent navMeshAgent;
-    public int vidas = 3;   
+    public Portao_S gate;
+    public int lifes = 3;   
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class Inimigo_S : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (vidas <= 0)
+        if (lifes <= 0)
         {
             Destroy(gameObject);
         }
@@ -28,12 +29,16 @@ public class Inimigo_S : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Bala"))
         {
-            vidas--;
+            lifes--;
         }
         if (col.gameObject.CompareTag("Portao"))
         {
             Destroy(gameObject);
         }
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 
 }
